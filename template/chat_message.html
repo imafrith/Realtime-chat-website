@@ -1,0 +1,100 @@
+
+{%include 'component/header.html'%}
+
+
+{%if message.author == user%}
+<li  class="right">
+    <div class="conversation-list">
+
+        <div class="user-chat-content">
+            <div class="ctext-wrap" >
+                <div class="ctext-wrap-content" style="border: 1px solid;">
+                    <p class="mb-0">
+                        {{message.body}}
+                    </p>
+                    <span
+                            class="align-middle" style="font-size: 12px;">{{message.created}}</span>
+                            <div id="messageContainer">
+                          
+                                {% if message.is_read %}
+                                <span class="double-tick">
+                                    <i style="color: lightgreen; font-size: 20px;" class="ri-check-double-line"></i>
+                                   
+                                </span>
+                                {% else %}
+                                <span class="single-tick">
+                                    <i style="color: gray; font-size: 20px;" class="ri-check-fill"></i>
+                                  
+                                </span>
+                                {% endif %}
+                        
+                            </div>
+                </div>
+
+                <div class="dropdown align-self-start">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="ri-more-2-fill"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Copy <i
+                                class="ri-file-copy-line float-end text-muted"></i></a>
+                        <a class="dropdown-item" href="#">Save <i
+                                class="ri-save-line float-end text-muted"></i></a>
+                        <a class="dropdown-item" href="#">Forward <i
+                                class="ri-chat-forward-line float-end text-muted"></i></a>
+                        <a class="dropdown-item" href="#">Delete <i
+                                class="ri-delete-bin-line float-end text-muted"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="conversation-name">You</div>
+        </div>
+    </div>
+</li>
+
+
+
+
+
+
+{%else%}
+<li>
+    <div class="conversation-list">
+        <div class="chat-avatar">
+            <img src="{{message.author.profile.profile_image.url}}" alt="">
+        </div>
+
+        <div class="user-chat-content">
+            <div class="ctext-wrap">
+                <div class="ctext-wrap-content">
+                    <p class="mb-0">
+                        {{message.body}}
+                    </p>
+                    <p class="chat-time mb-0"></i> <span
+                            class="align-middle">{{message.created}}</span></p>
+                </div>
+                <div class="dropdown align-self-start">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="ri-more-2-fill"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Copy <i
+                                class="ri-file-copy-line float-end text-muted"></i></a>
+                        <a class="dropdown-item" href="#">Save <i
+                                class="ri-save-line float-end text-muted"></i></a>
+                        <a class="dropdown-item" href="#">Forward <i
+                                class="ri-chat-forward-line float-end text-muted"></i></a>
+                        <a class="dropdown-item" href="#">Delete <i
+                                class="ri-delete-bin-line float-end text-muted"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="conversation-name">{{message.author.username}}</div>
+        </div>
+    </div>
+</li>
+
+{%endif%}

@@ -1,0 +1,74 @@
+
+
+{%load static%}
+
+
+
+
+
+
+
+
+{%block head%}  <script src="{% static 'websocket.js' %}"></script> {%endblock head%}
+
+<div class="tab-pane fade show active col-lg-3" id="pills-chat" role="tabpanel" aria-labelledby="pills-chat-tab">
+    <div class="">
+        <div class="px-4 pt-4">
+            <h4 class="mb-4">Chats</h4>
+           
+        </div>
+        <hr style="width:100%;text-align:left;margin-left:0;margin-top: 4vw;" >
+     
+     
+                <div class="">
+                    <h5 class="mb-3 px-3 font-size-16">Recent</h5>
+                    <div class="chat-message-list px-2" data-simplebar>
+                        <ul id="chat-list" class="list-unstyled chat-list">
+                            {% for chat in latest_chat %}
+                            <li>
+                                <a href="{% url 'chatroom' chat.message.group.group_name %}">
+                                    <div class="d-flex">
+                                        <div class="chat-user-img online align-self-center me-3 ms-0">
+                                            <img src="{{ chat.receiver.profile.profile_image.url }}" class="rounded-circle avatar-xs" alt="">
+                                            <span class="user-status"></span>
+                                        </div>
+                                        <div class="flex-grow-1 overflow-hidden">
+                                            <h5 class="text-truncate font-size-15 mb-1">
+                                                {{ chat.receiver.username }}
+                                            </h5>
+                                            <p class="chat-user-message text-truncate mb-0">
+                                                {{ chat.message.body|default:"No messages yet" }}
+                                            </p>
+                                        </div>
+                                        <div class="font-size-11">
+                                            {{ chat.message.created|date:"H:i" }}
+                                        </div>
+                                        <div class="unread-message">
+                                            {% if chat.new_message_count > 0 %}
+                                                {% if chat.new_message_count > 5 %}
+                                                    <span class="badge badge-soft-success rounded-pill">+{{ chat.new_message_count }}</span>
+                                                {% else %}
+                                                    <span class="badge badge-soft-success rounded-pill">{{ chat.new_message_count }}</span>
+                                                {% endif %}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+
+             
+            </div>
+          
+        </div>
+      {%include 'component/home.html'%}
+    </div>
+    
+</div>
+
+
+

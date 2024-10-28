@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+{%include 'component/header.html'%}
+<body>
+
+
+    <div class="layout-wrapper d-lg-flex">
+
+        <!-- Start left sidebar-menu -->
+        {%include 'component/navbar.html'%}
+        <!-- end left sidebar-menu -->
+        <!-- start chat-leftsidebar -->
+     
+{%block body%} {%endblock body%}
+
+        <!-- end chat-leftsidebar -->
+
+        <!-- Start User chat -->
+       
+        <!-- end  layout wrapper -->
+
+        <!-- JAVASCRIPT -->
+        <script src="static/assets/libs/jquery/jquery.min.js"></script>
+        <script src="static/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="static/assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="static/assets/libs/node-waves/waves.min.js"></script>
+
+        <!-- Magnific Popup-->
+        <script src="static/assets/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+        <!-- owl.carousel js -->
+        <script src="static/assets/libs/owl.carousel/owl.carousel.min.js"></script>
+
+        <!-- page init -->
+        <script src="static/assets/js/pages/index.init.js"></script>
+
+        <script src="static/assets/js/app.js"></script>
+
+
+        {%block javascript%} {%endblock javascript%}
+
+</body>
+
+</html>
